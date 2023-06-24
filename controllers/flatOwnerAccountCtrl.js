@@ -42,11 +42,19 @@ const flatOwnerAccountCtrl = {
 
     res.cookie("refreshtoken", refreshtoken, {
       httpOnly: true,
-      path: "/user/refresh_token",
+      path: "/flatOwner/refresh_token",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7d
     });
 
     res.json({ accesstoken });
+  },
+  logout: async (req, res) => {
+    try {
+      res.clearCookie("refreshtoken", { path: "/flatOwner/refresh_token" });
+      return res.json({ msg: "Logged out" });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
   },
   refreshToken: (req, res) => {
     try {

@@ -11,6 +11,6 @@ router.delete("/:id", flatOwnerCtrl.delete);
 router.post("/createAccount/:id", flatOwnerAccountCtrl.create);
 router.post("/login", flatOwnerAccountCtrl.login);
 router.post("/refreshToken", flatOwnerAccountCtrl.refreshToken);
-router.get("/getflatOwnerAccount", auth, flatOwnerAccountCtrl.getflatOwnerAccount);
+router.get("/getFlatOwnerAccount", auth, flatOwnerAccountCtrl.getflatOwnerAccount);
 
 module.exports = router;
