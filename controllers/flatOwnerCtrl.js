@@ -61,6 +61,27 @@ const flatOwnerCtrl = {
       return res.status(500).json({ msg: error.message });
     }
   },
+
+  createAccount: async (req, res) => {
+    try {
+      const { username, password } = req.body;
+      const flatOwnerId = req.params.id;
+
+      if (password.length < 6) return res.json({ msg: "ລະຫັດຜ່ານຄວນມີຫຼາຍກ່ວາ 6 ໂຕ" });
+
+      const newFlatOwnerAccount = new FlatOwnersAccount({
+        flatOwnerId,
+        username,
+        password,
+      });
+
+      await newFlatOwnerAccount.save();
+
+      return res.json({ msg: "ສ້າງສຳເລັດແລ້ວ" });
+    } catch (error) {
+      return res.status(500).json({ msg: error.message });
+    }
+  },
 };
 
 module.exports = flatOwnerCtrl;
