@@ -7,7 +7,7 @@ const flatOwnerAccountCtrl = {
   create: async (req, res) => {
     try {
       const { username, password } = req.body;
-      const flatOwnerId = req.params.id;
+      const flatOwnerId = req.flatOwnerAccount.id;
 
       if (password.length < 6) return res.json({ msg: "ລະຫັດຜ່ານຄວນມີຫຼາຍກ່ວາ 6 ໂຕ" });
 

@@ -5,6 +5,10 @@ const flatSchema = new mongoose.Schema(
     flatOwnerId: {
       type: String,
     },
+    image: {
+      type: Object,
+      required: true,
+    },
     flatName: {
       type: String,
       required: true,
