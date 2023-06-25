@@ -32,9 +32,12 @@ const flatSchema = new mongoose.Schema(
       trim: true,
       require: true,
     },
+    amountOfRoom: {
+      type: Number,
+      require: true,
+    },
     googleMapLink: {
       type: String,
-      trim: true,
       require: true,
     },
     isClose: {
