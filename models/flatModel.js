@@ -1,21 +1,17 @@
 const mongoose = require("mongoose");
 
-const flatOwnerSchema = new mongoose.Schema(
+const flatSchema = new mongoose.Schema(
   {
-    name: {
+    flatOwnerId: {
       type: String,
-      trim: true,
-      require: true,
     },
-    surname: {
+    flatName: {
       type: String,
-      trim: true,
-      require: true,
+      required: true,
     },
     tel: {
-      type: String,
-      trim: true,
-      require: true,
+      type: Number,
+      required: true,
     },
     village: {
       type: String,
@@ -32,7 +28,12 @@ const flatOwnerSchema = new mongoose.Schema(
       trim: true,
       require: true,
     },
-    isBlock: {
+    googleMapLink: {
+      type: String,
+      trim: true,
+      require: true,
+    },
+    isClose: {
       type: Boolean,
       default: false,
     },
@@ -42,4 +43,4 @@ const flatOwnerSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("FlatOwners", flatOwnerSchema);
+module.exports = mongoose.model("Flats", flatSchema);
