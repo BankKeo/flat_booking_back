@@ -68,6 +68,14 @@ const flatCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+  delete: async (req, res) => {
+    try {
+      await Flats.findByIdAndDelete(req.params.id);
+      res.json({ msg: "ລົບສຳເລັດແລ້ວ" });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
 };
 
 module.exports = flatCtrl;
