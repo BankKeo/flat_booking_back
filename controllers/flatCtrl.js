@@ -24,7 +24,7 @@ const flatCtrl = {
   },
   craete: async (req, res) => {
     try {
-      const { flatName, image, tel, village, district, province, amountOfRoom, googleMapLink } = req.body;
+      const { flatName, image, tel, village, district, province, googleMapLink } = req.body;
       const flatOwnerId = req.flatOwnerAccount.id;
       if (!image) return res.status(400).json({ msg: "ບໍ່ພົບຮູບພາບ" });
 
@@ -36,7 +36,6 @@ const flatCtrl = {
         village,
         district,
         province,
-        amountOfRoom,
         googleMapLink,
       });
 
