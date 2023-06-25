@@ -61,7 +61,6 @@ const flatOwnerCtrl = {
       return res.status(500).json({ msg: error.message });
     }
   },
-
   createAccount: async (req, res) => {
     try {
       const { username, password } = req.body;

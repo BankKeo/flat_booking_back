@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const cloudinary = require("cloudinary");
 const fs = require("fs");
+const auth = require("../middleware/auth");
 
 // we will upload image on cloudinary
 cloudinary.config({
@@ -9,7 +10,7 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET,
 });
 
-router.post("/upload", (req, res) => {
+router.post("/upload", auth, (req, res) => {
   try {
     if (!req.files || Object.keys(req.files).length === 0) return res.status(400).json({ msg: "ບໍ່ພົບໄຟລຖືກອັບໂຫຼດ" });
 
@@ -38,7 +39,7 @@ router.post("/upload", (req, res) => {
 });
 
 // Delete image only admin can use
-router.post("/destroy", (req, res) => {
+router.post("/destroy", auth, (req, res) => {
   try {
     const { public_id } = req.body;
     if (!public_id) return res.status(400).json({ msg: "ບໍ່ພົບໄຟລທີ່ຖືກເລືອກ" });
