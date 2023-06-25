@@ -5,5 +5,6 @@ const auth = require("../middleware/auth");
 router.post("/getFlat/:id", flatCtrl.fineOne);
 router.get("/getFlats", flatCtrl.fineMany);
 router.post("/create", auth, flatCtrl.craete);
+router.put("/update/:id", flatCtrl.update);
 
 module.exports = router;

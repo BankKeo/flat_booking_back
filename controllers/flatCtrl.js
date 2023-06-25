@@ -25,7 +25,7 @@ const flatCtrl = {
   craete: async (req, res) => {
     try {
       const { flatName, image, tel, village, district, province, googleMapLink } = req.body;
-      const flatOwnerId = req.flatOwnerAccount.id;
+      if (!image) return res.status(400).json({ msg: "ບໍ່ພົບຮູບພາບ" });
 
       const newFlat = new Flats({
         flatOwnerId,
@@ -43,6 +43,29 @@ const flatCtrl = {
       return res.json({ msg: "ສ້າງສຳເລັດແລ້ວ" });
     } catch (error) {
       return res.status(500).json({ msg: error.message });
+    }
+  },
+  update: async (req, res) => {
+    try {
+      const { flatName, image, tel, village, district, province, googleMapLink } = req.body;
+      if (!image) return res.status(400).json({ msg: "ບໍ່ພົບຮູບພາບ" });
+
+      await Flats.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          image,
+          flatName,
+          tel,
+          village,
+          district,
+          province,
+          googleMapLink,
+        }
+      );
+
+      res.json({ msg: "ອັບເດດສຳເລັດແລ້ວ" });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
     }
   },
 };
