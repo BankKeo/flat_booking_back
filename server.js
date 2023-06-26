@@ -19,6 +19,7 @@ app.use(
 // Routes
 app.use("/flatOwner", require("./routes/flatOwnerRouter"));
 app.use("/flat", require("./routes/flatRouter"));
+app.use("/room", require("./routes/roomRouter"));
 app.use("/api", require("./routes/upload"));
 
 // Connect to mongodb
